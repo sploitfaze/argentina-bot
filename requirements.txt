@@ -1,0 +1,5 @@
+uuid~=1.30
+logging~=0.4.9.6
+psycopg2-binary~=2.9.10
+python-dotenv~=1.0.1
+python-telegram-bot~=21.10
