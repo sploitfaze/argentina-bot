@@ -1,0 +1,33 @@
+name: Build, push, and deploy
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Build container image for main
+        if: github.ref == 'refs/heads/main'
+        run: docker build -t ${{ secrets.REGISTRY_NAME }}/argentina-bot:$(echo $GITHUB_SHA | head -c7) -t ${{ secrets.REGISTRY_NAME }}/argentina-bot:latest --build-arg REVISION=$(echo $GITHUB_SHA | head -c7) .
+
+      - name: Build container image for develop
+        if: github.ref == 'refs/heads/dev'
+        run: docker build -t ${{ secrets.REGISTRY_NAME }}/argentina-bot:$(echo $GITHUB_SHA | head -c7) -t ${{ secrets.REGISTRY_NAME }}/argentina-bot:dev --build-arg REVISION=$(echo $GITHUB_SHA | head -c7) .
+
+      - name: Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 1200
+
+      - name: Push image to DigitalOcean Container Registry
+        run: docker push ${{ secrets.REGISTRY_NAME }}/argentina-bot --all-tags
