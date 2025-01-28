@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "162e5841626d67ae6f1cd17df67776d25b7d5f1b6b373afd7ef21bab57d59af5"
+            "sha256": "215858d9a26c092300063708dc2ac23d45d19f1719f50ee2c591385e9e10cf9d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -41,6 +41,9 @@
             "version": "==0.14.0"
         },
         "httpcore": {
+            "extras": [
+                "asyncio"
+            ],
             "hashes": [
                 "sha256:8551cb62a169ec7162ac7be8d4817d561f60e08eaa485234898414bb5a8a0b4c",
                 "sha256:a3fff8f43dc260d5bd363d9f9cf1830fa3a458b332856f34282de498ed420edd"

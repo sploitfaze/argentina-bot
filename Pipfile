@@ -10,6 +10,7 @@ uuid = "*"
 logging = "*"
 python-dotenv = "*"
 httpx = "*"
+httpcore = {extras = ["asyncio"], version = "*"}
 
 [dev-packages]
 
