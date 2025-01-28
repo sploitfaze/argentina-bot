@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-telegram-bot = "*"
 psycopg2-binary = "*"
 uuid = "*"
 logging = "*"
 python-dotenv = "*"
 httpx = "*"
 httpcore = {extras = ["asyncio"], version = "*"}
+python-telegram-bot = {extras = ["all"], version = "*"}
 
 [dev-packages]
 
