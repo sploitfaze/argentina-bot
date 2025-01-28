@@ -9,7 +9,7 @@ psycopg2-binary = "*"
 uuid = "*"
 logging = "*"
 python-dotenv = "*"
-httpcore = {extras = ["asyncio"], version = "*"}
+httpx = "*"
 
 [dev-packages]
 
