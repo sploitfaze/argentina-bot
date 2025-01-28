@@ -36,7 +36,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     logger.info(f"User {user_id} successfully authorized.")
     await update.message.reply_text(
-        "Successful authorization. You can send an Order ID, Transaction ID, or Client ID to retrieve payment information."
+        "Successful authorization. You can send an: Payment ID, Merchant ID, User (client) ID in merchant's system, Payment (order) ID in merchant's system or Payment ID in provider's system to retrieve payment information."
     )
 
 
